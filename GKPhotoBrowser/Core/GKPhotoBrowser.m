@@ -308,10 +308,7 @@ static Class videoManagerClass = nil;
     _isStatusBarShow = isStatusBarShow;
     
     if (self.handler.statusBarAppearance) {
-        if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-            [self prefersStatusBarHidden];
-            [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-        }
+        [self setNeedsStatusBarAppearanceUpdate];
     }else {
         [[UIApplication sharedApplication] setStatusBarHidden:!isStatusBarShow];
     }
@@ -321,10 +318,7 @@ static Class videoManagerClass = nil;
     _statusBarStyle = statusBarStyle;
     
     if (self.handler.statusBarAppearance) {
-        if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-            [self preferredStatusBarStyle];
-            [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-        }
+        [self setNeedsStatusBarAppearanceUpdate];
     }else {
         [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle];
     }
